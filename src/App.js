@@ -25,6 +25,7 @@ function App() {
   const Deslogar = () => {
     setLogado(false);
   };
+
   return (
     <div className="App">
       <h1>Use effect foi chamado {useEffectCounter} vezes</h1>
