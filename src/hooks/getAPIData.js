@@ -10,6 +10,7 @@ export function useApiAnimeData(anime) {
     async function fetchData() {
       try {
         setLoading(true);
+        setError(null);
         const searchInput = anime.toLowerCase();
         const formattedSearch = searchInput.replace(/\s+/g, "-");
         const response = await axios.get(
