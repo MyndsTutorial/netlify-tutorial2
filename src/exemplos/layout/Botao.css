@@ -1,0 +1,30 @@
+/* como desafio de css eu disse pros alunos tentarem fazer os botões ter a cor branca */
+/* existe vários métodos o aluno pode criar a classe font ou usar a classe botao  */
+/* o recomendado é colocar dentro do botao a cor e a font-size */
+
+.botao{
+  width: 76px;
+  height: 50px;
+  border-radius: 8px;
+  /* aqui dentro é o desafio do jeito certo pois já criamos o botao */
+  color: white;
+  font-size: 1.2rem;
+  margin: 2px;
+}
+
+.red{
+  background-color: red;
+}
+.blue{
+  background-color: blue;
+}
+.purple{
+  background-color: purple;
+}
+
+/* jeito não recomendado mas ai depende do programador */
+
+.font-estilizada{
+  color: white;
+  font-size: 1.2rem;
+}

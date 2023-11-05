@@ -1,5 +1,8 @@
 import "./App.css";
 import {useState, useEffect} from "react";
+import FunctionSimples from "./exemplos/components/FunctionSimples";
+import FunctionDupla from "./exemplos/components/FunctionDupla";
+import Botao from "./exemplos/layout/Botao";
 function App() {
   // o useState tem como parametro 3 coisas
   // a primeira é uma variavel aonde será armazenada o estado
@@ -25,16 +28,25 @@ function App() {
   const Deslogar = () => {
     setLogado(false);
   };
-
   return (
     <div className="App">
+      {/* chamando um componente simples */}
+      <FunctionSimples />
+      {/* chamando a função dupla */}
+      <FunctionDupla />
+
       <h1>Use effect foi chamado {useEffectCounter} vezes</h1>
       {/* para mostrar um texto vamos usar um if e else ternário  */}
       {/* neste if e else a interrogação significa IF e os dois pontos significa ELSE  */}
       {logado ? <p> Logado </p> : <p>Deslogado</p>}
       {/* chamando o botao 2x e enviando os children como atributos  */}
-      <button onClick={Logar}>Logar</button>
-      <button onClick={Deslogar}>Deslogar</button>
+      {/* chamando o botao 2x e enviando os children como atributos  */}
+      <Botao tarefa={Logar} classe="botao purple">
+        Entrar
+      </Botao>
+      <Botao tarefa={Deslogar} classe="botao blue">
+        Sair
+      </Botao>
     </div>
   );
 }
