@@ -1,11 +1,10 @@
 .form-anime {
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   padding-inline: 30px;
   margin-top: 10px;
 }
-
 
 .form-anime input {
   padding: 10px;
@@ -28,4 +27,8 @@
 
 .form-anime button:hover {
   background-color: #0056b3;
+}
+.anime-cards {
+  display: flex;
+  flex-wrap: wrap;
 }
