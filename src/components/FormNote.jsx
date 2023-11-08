@@ -3,12 +3,27 @@ import "./FormNote.css";
 import {NoteContext} from "../context/NotesContext";
 
 function FormNote() {
-  const [noteCreated, setNoteCreated] = useState({title: "", description: ""});
-  const {addNote} = useContext(NoteContext);
+  const {
+    addNote,
+    note,
+    setNote,
+    isEditing,
+    setEditing,
+    idEdit,
+    setIdEdit,
+    editNote,
+  } = useContext(NoteContext);
 
   const SendNote = (e) => {
     e.preventDefault();
-    addNote(noteCreated.title, noteCreated.description);
+    if (isEditing) {
+      editNote(idEdit);
+    } else {
+      addNote(note.title, note.description);
+    }
+    setEditing(false);
+    setIdEdit("");
+    setNote({title: "", description: ""});
   };
 
   return (
@@ -20,10 +35,8 @@ function FormNote() {
         </label>
         <input
           type="text"
-          value={noteCreated.title}
-          onChange={(e) =>
-            setNoteCreated({...noteCreated, title: e.target.value})
-          }
+          value={note.title}
+          onChange={(e) => setNote({...note, title: e.target.value})}
           id="titleNote"
           placeholder="Título"
         />
@@ -33,15 +46,13 @@ function FormNote() {
         </label>
         <input
           type="text"
-          value={noteCreated.description}
-          onChange={(e) =>
-            setNoteCreated({...noteCreated, description: e.target.value})
-          }
+          value={note.description}
+          onChange={(e) => setNote({...note, description: e.target.value})}
           id="descriptionNote"
           placeholder="Descrição"
         />
         <button type="submit" id="buttonForm" className="margin-form">
-          Salvar Anotação
+          {isEditing ? "Editar Anotação" : "Adicionar anotação"}
         </button>
       </form>
     </aside>

@@ -1,49 +1,49 @@
-.anime-card {
+.anime-card{
   width: 45vw;
   margin: 10px;
   padding: 10px;
-  border-radius: 8px;
-  padding-left: 20px;
+  border-radius:8px;
+  padding-left:20px;
   min-height: 400px;
-  background-color: #3f72af;
-  display: flex;
-  justify-content: space-between;
+  background-color: #3F72AF;
+  display:flex;
+  justify-content:space-between;
   flex-direction: column;
 }
-.card-title {
+.card-title{
   font-size: 22px;
-  color: #dbe2ef;
+  color:#DBE2EF;
 }
-.image-card {
+.image-card{
   width: 200px;
-  height: 300px;
-  border-radius: 8px;
+  height:300px;
+  border-radius:8px;
 }
-.content {
-  display: flex;
-  padding-top: 10px;
+.content{
+  display:flex;
+  padding-top:10px;
 }
-.content div {
+.content div{
   margin-right: 10px;
 }
-.sinopse {
-  color: #dbe2ef;
-  font-size: 18px;
+.sinopse{
+  color:#DBE2EF;
+  font-size:18px;
 }
-.genres {
-  display: flex;
-  justify-content: flex-end;
+.genres{
+  display:flex;
+  justify-content:flex-end;
 }
-.studios {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-right: 20px;
-  margin-top: 10px;
+.studios{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  padding-right:20px;
+  margin-top:10px;
 }
-.studios div {
-  margin-left: 10px;
+.studios div{
+  margin-left:10px;
 }
-.genres div {
-  display: flex;
+.genres div{
+  display:flex;
 }

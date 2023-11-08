@@ -1,11 +1,26 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Note.css";
+import {BsFillTrashFill} from "react-icons/bs";
+import {BiSolidEdit} from "react-icons/bi";
+import {NoteContext} from "../context/NotesContext";
 function Note({title, description, date, id}) {
+  const {deleteNote, setEditing, setNote, setIdEdit} = useContext(NoteContext);
+  function SubmitToEdit() {
+    setEditing(true);
+    setNote({title, description});
+    setIdEdit(id);
+  }
   return (
-    <div>
-      <h1>{title}</h1>
-      <span>{description}</span>
-      <div>{date}</div>
+    <div className="noteContainer">
+      <div className="title">{title}</div>
+      <div className="description">{description}</div>
+      <div className="edit" onClick={() => SubmitToEdit()}>
+        <BiSolidEdit fontSize={23} color="yellow" />
+      </div>
+      <div className="trash" onClick={() => deleteNote(id)}>
+        <BsFillTrashFill fontSize={23} color="red" />
+      </div>
+      <div className="date">{date}</div>
     </div>
   );
 }
