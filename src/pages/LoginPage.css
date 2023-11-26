@@ -1,0 +1,18 @@
+.loginPage form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  border: 2px solid cyan;
+  padding: 10px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+}
+.loginPage form label {
+  font-size: 1.4rem;
+}
+.loginPage form input {
+  font-size: 1rem;
+}
