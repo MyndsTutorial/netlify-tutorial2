@@ -1,17 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import Popup from '../components/Popup';
-import AnimeCard from '../components/AnimeCard';
-import { useApiAnimeData } from '../hooks/getAPIData';
-import "./AnimePage.css"
+import React, {useEffect, useState} from "react";
+import Popup from "../components/Popup";
+import AnimeCard from "../components/AnimeCard";
+import {useApiAnimeData} from "../hooks/getAPIData";
+import "./AnimePage.css";
+import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 function AnimePage() {
-  const [animeName, setAnimeName] = useState('one piece');
-  const [animeDigitado, setAnimeDigitado] = useState('one piece');
-  const { animeData, loading, error } = useApiAnimeData(animeName);
-  const [popupContent,setPopupContent] = useState({message: '',color: ''})
-  const [showPopup,setShowPopup]= useState(false);
+  const [animeName, setAnimeName] = useState("one piece");
+  const [animeDigitado, setAnimeDigitado] = useState("one piece");
+  const {animeData, loading, error} = useApiAnimeData(animeName);
+  const [popupContent, setPopupContent] = useState({message: "", color: ""});
+  const [showPopup, setShowPopup] = useState(false);
 
+  const isLogged = useSelector((state) => state.user.isLogged);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLogged === false) {
+      navigate("/login");
+    }
+  }, []);
   function showAndHidePopup(message, color) {
-    setPopupContent({ message, color });
+    setPopupContent({message, color});
     setShowPopup(true);
     setTimeout(() => {
       setShowPopup(false);
@@ -20,20 +30,20 @@ function AnimePage() {
   useEffect(() => {
     if (!loading) {
       if (error) {
-        showAndHidePopup(`Error: ${error}`, 'error');
+        showAndHidePopup(`Error: ${error}`, "error");
       } else {
-        showAndHidePopup('Animes coletados com sucesso', 'success');
+        showAndHidePopup("Animes coletados com sucesso", "success");
       }
     }
-  }, [loading, error,animeData]);
+  }, [loading, error, animeData]);
   const handleInputChange = (e) => {
     setAnimeDigitado(e.target.value);
   };
-  function BuscarOAnime(){
-    setAnimeName(animeDigitado)
+  function BuscarOAnime() {
+    setAnimeName(animeDigitado);
   }
   return (
-    <div> 
+    <div>
       <div className="form-anime">
         <input
           type="text"
@@ -41,29 +51,24 @@ function AnimePage() {
           value={animeDigitado}
           onChange={handleInputChange}
         />
-        <button onClick={()=>BuscarOAnime()}>Pesquisar</button>
+        <button onClick={() => BuscarOAnime()}>Pesquisar</button>
       </div>
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
       {Array.isArray(animeData) ? (
-        <div className='anime-cards'>
+        <div className="anime-cards">
           {animeData.map((a) => (
-            <AnimeCard key={a.mal_id} {...a}/> 
+            <AnimeCard key={a.mal_id} {...a} />
           ))}
         </div>
       ) : (
         animeData && <div>No anime data available</div>
       )}
-      {
-          showPopup ? 
-            <Popup 
-              message={popupContent.message}
-              color={popupContent.color}
-            />
-          : null
-        }
+      {showPopup ? (
+        <Popup message={popupContent.message} color={popupContent.color} />
+      ) : null}
     </div>
-  )
+  );
 }
 
-export default AnimePage
+export default AnimePage;
