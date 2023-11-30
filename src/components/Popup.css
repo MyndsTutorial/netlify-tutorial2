@@ -1,4 +1,4 @@
-.popup {
+.popup{
   position: fixed;
   bottom: 50px;
   right: 50px;
@@ -13,22 +13,22 @@
   font-size: 1.6rem;
   color: white;
   animation: showPopup 2s ease-in-out;
-  padding: 10px;
+  padding:10px;
 }
 @keyframes showPopup {
-  0% {
-    right: -360px;
+  0%{
+      right: -360px;
   }
-  80% {
-    right: 100px;
+  80%{
+      right: 100px;
   }
-  100% {
-    right: 50px;
+  100%{
+      right: 50px;
   }
 }
-.warning {
+.warning{
   background-color: red;
 }
-.success {
+.success{
   background-color: green;
 }

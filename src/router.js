@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: "favorito",
+        path: "/favorito",
         element: <Favorito />,
         loader: async () => {
           return fetch(`https://api.jikan.moe/v4/anime?q=one-piece`);

@@ -9,8 +9,6 @@ export function useApiAnimeData(anime) {
   useEffect(() => {
     async function fetchData() {
       try {
-        setLoading(true);
-        setError(null);
         const searchInput = anime.toLowerCase();
         const formattedSearch = searchInput.replace(/\s+/g, "-");
         const response = await axios.get(
@@ -25,7 +23,6 @@ export function useApiAnimeData(anime) {
         }
       } catch (err) {
         setError(err.message);
-        setLoading(false);
       } finally {
         setLoading(false);
       }
