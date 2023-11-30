@@ -5,12 +5,14 @@ import AnimeCard from "../components/AnimeCard";
 import {useDispatch, useSelector} from "react-redux";
 import {saveAnimesToData} from "../redux/slices/actions/saveAnimesToStorage";
 import Popup from "../components/Popup";
+import useCountStore from "../zustand/Carteira";
 function Favorito() {
   const isLogged = useSelector((state) => state.user.isLogged);
   const favoritesList = useSelector((state) => state.animes.animesList);
   const navigate = useNavigate();
   const [isHover, setIsHover] = useState(false);
   const dispatch = useDispatch();
+  const count = useCountStore((state) => state.count);
   const [popupContent, setPopupContent] = useState({message: "", color: ""});
   const [showPopup, setShowPopup] = useState(false);
   function showAndHidePopup(message, color) {

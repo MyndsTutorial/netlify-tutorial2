@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import Favorito from "./pages/Favorito";
 import NotesPage from "./pages/NotesPage";
 import LoginPage from "./pages/LoginPage";
+import CarteiraPage from "./pages/CarteiraPage";
 
 export const router = createBrowserRouter([
   {
@@ -29,11 +30,15 @@ export const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: "/favorito",
+        path: "favorito",
         element: <Favorito />,
-        loader: async () => {
-          return fetch(`https://api.jikan.moe/v4/anime?q=one-piece`);
-        },
+        // loader: async () => {
+        //   return fetch(`https://api.jikan.moe/v4/anime?q=one-piece`);
+        // },
+      },
+      {
+        path: "carteira",
+        element: <CarteiraPage />,
       },
     ],
     errorElement: <ErrorPage />,

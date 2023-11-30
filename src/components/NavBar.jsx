@@ -29,6 +29,9 @@ function Navbar() {
         <div>
           <Link to="/notes">Anotações</Link>
         </div>
+        <div>
+          <Link to="/carteira">Carteira</Link>
+        </div>
       </div>
       <div id="right-links">
         {isLogged ? (
