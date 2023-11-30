@@ -1,5 +1,5 @@
-import axios from "axios";
-import {useState, useEffect} from "react";
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 export function useApiAnimeData(anime) {
   const [animeData, setAnimeData] = useState(null);
@@ -10,16 +10,14 @@ export function useApiAnimeData(anime) {
     async function fetchData() {
       try {
         const searchInput = anime.toLowerCase();
-        const formattedSearch = searchInput.replace(/\s+/g, "-");
-        const response = await axios.get(
-          `https://api.jikan.moe/v4/anime?q=${formattedSearch}`
-        );
+        const formattedSearch = searchInput.replace(/\s+/g, '-');
+        const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${formattedSearch}`);
 
         if (response.status === 200) {
           setAnimeData(response.data.data);
           // console.log(response.data.data)
         } else {
-          setError("Failed to fetch anime data");
+          setError('Failed to fetch anime data');
         }
       } catch (err) {
         setError(err.message);
@@ -31,5 +29,5 @@ export function useApiAnimeData(anime) {
     fetchData();
   }, [anime]);
 
-  return {animeData, loading, error};
+  return { animeData, loading, error };
 }

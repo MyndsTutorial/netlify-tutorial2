@@ -38,6 +38,7 @@ function Favorito() {
   return (
     <div>
       <div>
+        {count}
         <div className="anime-cards">
           {favoritesList.map((a) => (
             <AnimeCard key={a.mal_id} {...a} />

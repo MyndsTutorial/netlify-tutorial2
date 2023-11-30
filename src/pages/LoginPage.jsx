@@ -34,6 +34,8 @@ function LoginPage() {
     dispatch(userActions.toggleLogged());
     navigate("/");
   };
+
+  useEffect(() => {}, []);
   return (
     <div className="loginPage">
       <form id="formUser" onSubmit={loginUser}>
