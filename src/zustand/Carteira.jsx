@@ -1,4 +1,5 @@
 import {create} from "zustand";
+import {generateRandomUUID} from "../helpers/generateRandomId";
 
 const useMoneyStore = create((set) => ({
   carteiraState: {
@@ -27,35 +28,28 @@ const useMoneyStore = create((set) => ({
       console.error("Error fetching money data:", error);
     }
   },
-  addTransaction: (transactionData) => {
+  addTransaction: async (transactionData) => {
+    const response = await fetch("https://economia.awesomeapi.com.br/json/all");
+    const data = await response.json();
     set((state) => {
       const newState = {
         carteiraState: {
           ...state.carteiraState,
           transactions: state.carteiraState.transactions + 1,
+          expenses: [
+            ...state.carteiraState.expenses,
+            {
+              id: generateRandomUUID(),
+              value: transactionData.value,
+              description: transactionData.description,
+              currency: transactionData.currency,
+              cambio: data[transactionData.currency]?.bid,
+              convertedToReal:
+                transactionData.value * data[transactionData.currency]?.bid,
+            },
+          ],
         },
       };
-
-      if (transactionData.amount < 0) {
-        newState.carteiraState = {
-          ...newState.carteiraState,
-          positive: false,
-        };
-
-        const expense = {
-          id: newState.carteiraState.transactions + 1,
-          amount: transactionData.amount,
-          description: `Expense for Transaction #${
-            newState.carteiraState.transactions + 1
-          }`,
-        };
-
-        newState.carteiraState.expenses = [
-          ...newState.carteiraState.expenses,
-          expense,
-        ];
-      }
-
       return newState;
     });
   },
