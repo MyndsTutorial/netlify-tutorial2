@@ -68,7 +68,7 @@ function CarteiraPage() {
           </button>
         </div>
         <div className="">
-          <h1>Minha Carteira</h1>
+          <h1>Minha Carteira: {carteiraState.allMoney}R$</h1>
           <div className="header-wallet">
             <form onSubmit={handleSubmit}>
               <div className="top-form">
@@ -126,12 +126,20 @@ function CarteiraPage() {
                 <div>Converted to Real</div>
               </div>
               {carteiraState.expenses.map((expense) => (
-                <div className="linha-table" key={expense.id}>
+                <div
+                  className="linha-table"
+                  key={expense.id}
+                  style={
+                    expense.transactionType === "gasto"
+                      ? {backgroundColor: "red"}
+                      : {backgroundColor: "green"}
+                  }
+                >
                   <div>{expense.description}</div>
                   <div>{expense.cambio}</div>
                   <div>{expense.value}</div>
                   <div>{expense.currency}</div>
-                  <div>{expense.convertedToReal}</div>
+                  <div>{parseFloat(expense.convertedToReal.toFixed(2))}</div>
                 </div>
               ))}
             </div>
