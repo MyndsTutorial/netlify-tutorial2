@@ -7,6 +7,7 @@ import Favorito from "./pages/Favorito";
 import NotesPage from "./pages/NotesPage";
 import LoginPage from "./pages/LoginPage";
 import CarteiraPage from "./pages/CarteiraPage";
+import FunnyPage from "./pages/Funny";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: "carteira",
         element: <CarteiraPage />,
+      },
+      {
+        path: "funny",
+        element: <FunnyPage />,
       },
     ],
     errorElement: <ErrorPage />,

@@ -32,6 +32,9 @@ function Navbar() {
         <div>
           <Link to="/carteira">Carteira</Link>
         </div>
+        <div>
+          <Link to="/funny">Divirta-se</Link>
+        </div>
       </div>
       <div id="right-links">
         {isLogged ? (
